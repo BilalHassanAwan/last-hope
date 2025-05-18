@@ -1,46 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To My Star, With Love</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="stars" id="stars"></div>
-  <div class="container">
-    <h1 class="title">My Dearest...</h1>
-    <p class="subtitle">Under these stars, my heart writes to you.</p>
+```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>To My Star, With Love</title>
+     <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+     <div class="stars" id="stars"></div>
+     <div class="container">
+       <h1 class="title">My Dearest...</h1>
+       <p class="subtitle">Under these stars, my heart writes to you.</p>
 
-    <div class="message-buttons">
-      <button onclick="typeMessage(0)">Whisper 1</button>
-      <button onclick="typeMessage(1)">Whisper 2</button>
-      <button onclick="typeMessage(2)">Whisper 3</button>
-    </div>
+       <div class="message-buttons">
+         <button onclick="typeMessage(0)">Whisper 1</button>
+         <button onclick="typeMessage(1)">Whisper 2</button>
+         <button onclick="typeMessage(2)">Whisper 3</button>
+       </div>
 
-    <div id="typewriter"></div>
+       <div id="typewriter"></div>
 
-    <div class="letter-section">
-      <button class="open-letter-btn" onclick="revealLetter()">Open My Heart</button>
-      <div id="letter">
-        My Beloved,
-        <br><br>
-        Each star above reminds me of the light you bring into my world. I’ve watched you from afar, my heart racing like a comet across the sky. This page is my canvas, painted with courage and hope, to tell you what words alone can’t express.
-        <br><br>
-        <strong>I’m in love with you.</strong>
-        <br><br>
-        Every pixel here, every note that plays, is a piece of my soul reaching out, dreaming you might feel the same spark I do.
-      </div>
-    </div>
+       <div class="letter-section">
+         <button class="open-letter-btn" onclick="revealLetter()">Open My Heart</button>
+         <div id="letter">
+           My Beloved,
+           <br><br>
+           Each star above reminds me of the light you bring into my world. I’ve watched you from afar, my heart racing like a comet across the sky. This page is my canvas, painted with courage and hope, to tell you what words alone can’t express.
+           <br><br>
+           <strong>I’m in love with you.</strong>
+           <br><br>
+           Every pixel here, every note that plays, is a piece of my soul reaching out, dreaming you might feel the same spark I do.
+         </div>
+       </div>
 
-    <div class="photo-frame">
-      <h2 class="title">Your Radiance</h2>
-      <div class="heart-frame"></div>
-    </div>
-  </div>
+       <div class="photo-frame">
+         <h2 class="title">Your Radiance</h2>
+         <div class="heart-frame" style="background-image: url('photos/image1.jpg');"></div>
+         <!-- Added more images in a gallery -->
+         <div class="gallery">
+           <img src="photos/image2.jpg" alt="Moment 1" class="gallery-img">
+           <img src="photos/image3.jpg" alt="Moment 2" class="gallery-img">
+         </div>
+       </div>
+     </div>
 
-  <audio id="bg-music" autoplay controls class="music-player"></audio>
+     <audio id="bg-music" autoplay controls class="music-player"></audio>
 
-  <script src="script.js"></script>
-</body>
-</html>
+     <script src="script.js"></script>
+   </body>
+   </html>
+   ```
