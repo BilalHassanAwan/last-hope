@@ -1,53 +1,264 @@
-```html
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>To My Star, With Love</title>
-     <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-     <div class="stars" id="stars"></div>
-     <div class="container">
-       <h1 class="title">My Dearest...</h1>
-       <p class="subtitle">Under these stars, my heart writes to you.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To My Star, With Love</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Roboto:wght@400&display=swap');
 
-       <div class="message-buttons">
-         <button onclick="typeMessage(0)">Whisper 1</button>
-         <button onclick="typeMessage(1)">Whisper 2</button>
-         <button onclick="typeMessage(2)">Whisper 3</button>
-       </div>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #1a1a2e, #16213e);
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-       <div id="typewriter"></div>
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: -1;
+      overflow: hidden;
+    }
 
-       <div class="letter-section">
-         <button class="open-letter-btn" onclick="revealLetter()">Open My Heart</button>
-         <div id="letter">
-           My Beloved,
-           <br><br>
-           Each star above reminds me of the light you bring into my world. I’ve watched you from afar, my heart racing like a comet across the sky. This page is my canvas, painted with courage and hope, to tell you what words alone can’t express.
-           <br><br>
-           <strong>I’m in love with you.</strong>
-           <br><br>
-           Every pixel here, every note that plays, is a piece of my soul reaching out, dreaming you might feel the same spark I do.
-         </div>
-       </div>
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
 
-       <div class="photo-frame">
-         <h2 class="title">Your Radiance</h2>
-         <div class="heart-frame" style="background-image: url('photos/image1.jpg');"></div>
-         <!-- Added more images in a gallery -->
-         <div class="gallery">
-           <img src="photos/image2.jpg" alt="Moment 1" class="gallery-img">
-           <img src="photos/image3.jpg" alt="Moment 2" class="gallery-img">
-         </div>
-       </div>
-     </div>
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
 
-     <audio id="bg-music" autoplay controls class="music-player"></audio>
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 800px;
+    }
 
-     <script src="script.js"></script>
-   </body>
-   </html>
-   ```
+    .title {
+      font-family: 'Caveat', cursive;
+      font-size: 4.5em;
+      color: #ffd700;
+      text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      color: #e0e0e0;
+      margin-bottom: 40px;
+    }
+
+    .message-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .message-buttons button {
+      background: transparent;
+      border: 2px solid #ffd700;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      color: #ffd700;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ffd700;
+    }
+
+    .message-buttons button:hover {
+      background-color: #ffd700;
+      color: #1a1a2e;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    #typewriter {
+      margin: 30px auto;
+      font-size: 1.2em;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #ffd700;
+      max-width: 600px;
+      min-height: 60px;
+      display: none;
+    }
+
+    .letter-section {
+      margin-top: 50px;
+    }
+
+    .open-letter-btn {
+      background: transparent;
+      border: 2px solid #ff6f61;
+      color: #ff6f61;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ff6f61;
+    }
+
+    .open-letter-btn:hover {
+      background-color: #ff6f61;
+      color: #fff;
+      box-shadow: 0 0 20px #ff6f61;
+    }
+
+    #letter {
+      margin-top: 30px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #ff6f61;
+      border-radius: 15px;
+      max-width: 700px;
+      text-align: left;
+      font-size: 1.1em;
+      line-height: 1.7;
+      box-shadow: 0 0 20px #ff6f61;
+      display: none;
+    }
+
+    .photo-frame {
+      margin-top: 60px;
+    }
+
+    .heart-frame {
+      width: 300px;
+      height: 300px;
+      background: url('https://via.placeholder.com/300') center/cover;
+      clip-path: path('M150,40 C100,10 50,40 50,90 C50,140 150,200 150,260 C150,200 250,140 250,90 C250,40 200,10 150,40 Z');
+      margin: 0 auto;
+      box-shadow: 0 0 20px #ffd700;
+      transition: transform 0.3s ease;
+    }
+
+    .heart-frame:hover {
+      transform: scale(1.05);
+    }
+
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1a1a2e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="container">
+    <h1 class="title">My Dearest...</h1>
+    <p class="subtitle">Under these stars, my heart writes to you.</p>
+
+    <div class="message-buttons">
+      <button onclick="typeMessage(0)">Whisper 1</button>
+      <button onclick="typeMessage(1)">Whisper 2</button>
+      <button onclick="typeMessage(2)">Whisper 3</button>
+    </div>
+
+    <div id="typewriter"></div>
+
+    <div class="letter-section">
+      <button class="open-letter-btn" onclick="revealLetter()">Open My Heart</button>
+      <div id="letter">
+ My Beloved,
+<br><br>
+Each star above reminds me of the light you bring into my world. I’ve watched you from afar, my heart racing like a comet across the sky. This page is my canvas, painted with courage and hope, to tell you what words alone can’t express.
+<br><br>
+<strong>I’m in love with you.</strong>
+<br><br>
+Every pixel here, every note that plays, is a piece of my soul reaching out, dreaming you might feel the same spark I do.
+      </div>
+    </div>
+
+    <div class="photo-frame">
+      <h2 class="title">Your Radiance</h2>
+      <div class="heart-frame"></div>
+    </div>
+  </div>
+
+  <audio id="bg-music" autoplay controls class="music-player"></audio>
+
+  <script>
+    // Create starry background
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = `${Math.random() * 3}px`;
+      star.style.height = star.style.width;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      starsContainer.appendChild(star);
+    }
+
+    // Messages with typewriter effect
+    const messages = [
+      "You’re the melody my heart hums every day.",
+      "Every glance at you feels like catching a falling star.",
+      "My world aligns perfectly when I think of you."
+    ];
+
+    let isTyping = false;
+    const typewriter = document.getElementById('typewriter');
+
+    async function typeMessage(index) {
+      if (isTyping) return;
+      isTyping = true;
+      typewriter.style.display = 'block';
+      typewriter.textContent = '';
+      const text = messages[index];
+      for (let char of text) {
+        typewriter.textContent += char;
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
+      isTyping = false;
+    }
+
+    function revealLetter() {
+      const letter = document.getElementById('letter');
+      letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Music playlist
+    const playlist = [
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+    ];
+
+    let currentTrack = 0;
+    const audio = document.getElementById('bg-music');
+    audio.src = playlist[currentTrack];
+
+    audio.addEventListener('ended', () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      audio.src = playlist[currentTrack];
+      audio.play();
+    });
+  </script>
+</body>
+</html>
